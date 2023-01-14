@@ -1,0 +1,9 @@
+.orders-table {
+  width: 100px;
+  height: 100px;
+}
+.main-table {
+  display: none;
+  display: block;
+  /* visibility: hidden; */
+}
