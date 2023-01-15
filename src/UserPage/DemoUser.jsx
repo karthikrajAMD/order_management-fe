@@ -16,8 +16,8 @@ function DemoUser() {
       <Card style={{ width: "18rem" }} bg={"info"}>
         {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
         <Card.Body>
-          <Card.Title>User 1</Card.Title>
-          <Card.Text>email : user1@gmail.com</Card.Text>
+          <Card.Title>Name : User 1</Card.Title>
+          <Card.Text>Email : user1@gmail.com</Card.Text>
           <Button
             variant="primary"
             onClick={() => {
@@ -34,8 +34,8 @@ function DemoUser() {
       <Card style={{ width: "18rem" }} bg={"info"}>
         {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
         <Card.Body>
-          <Card.Title>User 2</Card.Title>
-          <Card.Text>user2@gmail.com</Card.Text>
+          <Card.Title>Name : User 2</Card.Title>
+          <Card.Text>Email : user2@gmail.com</Card.Text>
           <Button
             variant="primary"
             onClick={() => {
@@ -52,8 +52,8 @@ function DemoUser() {
       <Card style={{ width: "18rem" }} bg={"info"}>
         {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
         <Card.Body>
-          <Card.Title>User 3</Card.Title>
-          <Card.Text>user3@gmail.com</Card.Text>
+          <Card.Title>Name : User 3</Card.Title>
+          <Card.Text>Email : user3@gmail.com</Card.Text>
           <Button
             variant="primary"
             onClick={() => {

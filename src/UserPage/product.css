@@ -38,13 +38,6 @@
 .cartPage-table {
   margin-top: 10px;
 }
-.cartPage-tbody {
-}
-.cartPage-tr {
-}
-.carPage-container {
-  /* height: 500px; */
-}
 .carPage-empty {
   height: 500px;
   display: flex;

@@ -11,18 +11,20 @@ import AdminDashboard from "./ShopSidePage/AdminDashboard";
 import CartPage from "./UserPage/CartPage";
 import ParticularOrder from "./ShopSidePage/ParticularOrder";
 import AddProduct from "./ShopSidePage/AddProduct";
+import WelcomePage from "./WelcomePage";
 function App() {
   const [a, setA] = useState("");
   return (
     <div className="App">
       <Context.Provider value={[a, setA]}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/home" element={<Home />} />
           <Route
             path="/users/forgotpassword/:id/:token"
             element={<ForgotPassword />}
           />
-          <Route path="/demo-user" element={<DemoUser />} />
+          {/* <Route path="/demo-user" element={<DemoUser />} /> */}
           <Route path="/shoppage" element={<ShopPage />} />
           <Route path="/admin" element={<AdminLoginPage />} />
           <Route path="/cartpage" element={<CartPage />} />

@@ -56,8 +56,8 @@ function AddProduct() {
   return (
     <main className={sideShow ? "space-toggle" : null}>
       <SidebarDashboard name={PageName} role={"admin"} />
-      <div>
-        <Form>
+      <div className="container">
+        <Form className="add-product-form">
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Name </Form.Label>
             <Form.Control
@@ -66,9 +66,6 @@ function AddProduct() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            {/* <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text> */}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicBrand">
             <Form.Label>Brand </Form.Label>
@@ -106,14 +103,6 @@ function AddProduct() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </Form.Group>
-          {/* <Form.Group className="mb-3" controlId="formBasicQuantity">
-            <Form.Label>Quantity</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Enter quantity"
-              onChange={(e) => setQuantity(e.target.value)}
-            />
-          </Form.Group> */}
           <Form.Group className="mb-3" controlId="formBasicRam">
             <Form.Label>RAM</Form.Label>
             <Form.Control
@@ -127,15 +116,11 @@ function AddProduct() {
             <Form.Label>ROM</Form.Label>
             <Form.Control
               type="number"
-              placeholder="Enter ROm"
+              placeholder="Enter ROM"
               value={rom}
               onChange={(e) => setRom(e.target.value)}
             />
           </Form.Group>
-
-          {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group> */}
           <Button
             variant="primary"
             type="submit"

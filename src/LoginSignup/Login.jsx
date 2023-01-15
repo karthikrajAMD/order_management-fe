@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../login-signup.css";
 import { env } from "../environment";
 import { Context } from "../Context.js";
@@ -14,7 +15,6 @@ const Login = () => {
   });
 
   const setVal = (e) => {
-    // console.log(e.target.value);
     const { name, value } = e.target;
 
     setInpval(() => {
@@ -27,9 +27,7 @@ const Login = () => {
 
   const loginuser = async (e) => {
     e.preventDefault();
-
     const { email, password } = inpval;
-
     if (email === "") {
       toast.error("email is required!", {
         position: "top-center",
@@ -47,8 +45,7 @@ const Login = () => {
         position: "top-center",
       });
     } else {
-      // console.log("user login succesfully done");
-
+      toast.success("Welcome");
       const data = await fetch(`${env.apiurl}/users/login`, {
         method: "POST",
         headers: {
@@ -61,8 +58,8 @@ const Login = () => {
       });
       const res = await data.json();
       if (res.statusCode === 200) {
-        sessionStorage.setItem("token", res.token);
         toast.success(res.message, { position: "top-center" });
+        sessionStorage.setItem("token", res.token);
         setTimeout(() => {
           navigate("/dashboard");
         }, 3000);
@@ -78,13 +75,15 @@ const Login = () => {
     <>
       <section>
         <div className="form_data">
-          <div className="form_heading">
+          <div className="form_heading ">
             <h1>Welcome Back, Log In</h1>
             <p>Hi, we are you glad you are back. Please login.</p>
+            <p className="mt-0 mb-0">Login mail: karthikrajaamd@gmail.com</p>
+            <p className="mb-0 mt-0">Password: karthikraja</p>
           </div>
 
           <form>
-            <div className="form_input">
+            <div className="form_input mt-0">
               <label htmlFor="email">Email</label>
               <input
                 type="email"

@@ -12,6 +12,8 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import LoginIcon from "@mui/icons-material/Login";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
@@ -21,9 +23,7 @@ import Signup from "../LoginSignup/Signup";
 import { Context } from "../Context.js";
 import ForgotPassword from "../LoginSignup/ForgotPassword";
 import PasswordReset from "../LoginSignup/PasswordReset";
-import MainPage from "../MainPage";
-import SimpleImageSlider from "react-simple-image-slider";
-
+import DemoUser from "../UserPage/DemoUser";
 import "../App.css";
 const drawerWidth = 240;
 
@@ -63,12 +63,13 @@ function ResponsiveDrawer(props) {
             <ListItemButton
               onClick={() => {
                 setA(text);
+                console.log(a);
               }}
             >
               <ListItemIcon>
                 {index === 0 ? <HomeIcon /> : ""}
-                {/* {index === 1 ? <AdminPanelSettingsIcon /> : ""}
-                {index === 2 ? <SupervisorAccountIcon /> : ""} */}
+                {index === 1 ? <LoginIcon /> : ""}
+                {index === 2 ? <AppRegistrationIcon /> : ""}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -168,7 +169,8 @@ function ResponsiveDrawer(props) {
         <Toolbar />
         {a ? (
           <Typography component="div">
-            {a === "Demo-user" ? navigate("/demo-user") : ""}
+            {console.log(a)}
+            {a === "Demo-user" ? <DemoUser /> : ""}
             {a === "Login" ? <Login /> : ""}
             {a === "Signup" ? <Signup /> : ""}
             {a === "Forgot" ? <ForgotPassword /> : ""}
@@ -176,18 +178,6 @@ function ResponsiveDrawer(props) {
           </Typography>
         ) : (
           <Login />
-          // <div>
-          //   <SimpleImageSlider
-          //     width={896}
-          //     height={504}
-          //     images={images}
-          //     // showBullets={true}
-          //     // showNavs={true}
-          //     autoPlay={true}
-          //     loop={true}
-          //     slideDuration={0.5}
-          //   />
-          // </div>
         )}
       </Box>
     </Box>

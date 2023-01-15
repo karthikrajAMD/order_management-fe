@@ -11,10 +11,11 @@ import { Context } from "../Context";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import SidebarDashboard from "../Bars/SidebarDashboard";
+import Loading from "../Loading";
 import "./ShopSidePage.css";
 function AdminDashboard() {
   // let [data, setData] = useState([]);
-  let [orders, SetOrders] = useState([]);
+  let [orders, SetOrders] = useState();
   let [particularOrders, setParticularOrders] = useState([]);
   let [showMainTable, setShowMainTable] = useState(true);
   let [showSubTable, setShowSubTable] = useState(false);
@@ -84,30 +85,8 @@ function AdminDashboard() {
   const handleClose1 = () => {
     setShow1(false);
   };
-  // const handleShow1 = () => {
-  //   setShow1(true);
-  // };
-  // const handleClose2 = () => {
-  //   setShow2(false);
-  // };
-  // const handleShow2 = () => {
-  //   setShow2(true);
-  // };
-  // const [show0, setShow0] = useState(false);
-  // const handleShow = () => {
-  //   setShow0(true);
-  // };
 
   let navigate = useNavigate();
-  // async function setting({ e }) {
-  //   await setId(e._id);
-  //   await setEmailN(e.email);
-  //   await setRole(e.role);
-  //   await setFirstN(e.firstName);
-  //   await setLastN(e.lastName);
-  //   await setMainRole(e.role);
-  // }
-
   let loadData = async () => {
     let token = sessionStorage.getItem("token");
     async function purchaseDetails() {
@@ -148,69 +127,73 @@ function AdminDashboard() {
       <SidebarDashboard name={name} role={"admin"} />
       <div className="dash-cont">
         <div className="dashboard-main">
-          <Table
-            style={{ display: showMainTable ? "block" : "none" }}
-            striped
-            bordered
-            hover
-          >
-            <thead>
-              <tr>
-                <th
-                  style={{ textAlign: "center", fontSize: "25px" }}
-                  colSpan="6"
-                >
-                  Order-Details
-                </th>
-              </tr>
-            </thead>
+          {orders ? (
+            <Table
+              style={{ display: showMainTable ? "block" : "none" }}
+              striped
+              bordered
+              hover
+            >
+              <thead>
+                <tr>
+                  <th
+                    style={{ textAlign: "center", fontSize: "25px" }}
+                    colSpan="6"
+                  >
+                    Order-Details
+                  </th>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Name</th>
+                  <th>Product Name</th>
+                  <th>Ordered Date</th>
+                  <th>Total price</th>
+                  <th>Order Id</th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map((e, i) => {
+                  return (
+                    <tr key={i}>
+                      {/* {console.log(e)} */}
+                      <td>{i + 1}</td>
+                      <td>
+                        <Link
+                          className="orders-link"
+                          onClick={() => {
+                            updateProductDetails(e.orderedProducts, e._id);
+                            console.log(particularOrders);
+                            console.log(primaryId);
+                            setShowSubTable(true);
+                            setShowMainTable(false);
+                          }}
+                        >
+                          {e.Name}
+                        </Link>
+                      </td>
+                      <td>{e.orderedProducts.map((e) => "/" + e.name)}</td>
+                      <td>{e.created}</td>
+                      <td>
+                        Rs.
+                        {e.orderedProducts.reduce(
+                          (e, acc) => e + acc.price * acc.quantity,
+                          0
+                        )}
+                        .00
+                      </td>
+                      <td>{e.OrderId}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+          ) : (
+            <Loading style={{ marginTop: "30%" }} />
+          )}
 
-            <thead>
-              <tr>
-                <th>S.No</th>
-                <th>Name</th>
-                <th>Product Name</th>
-                <th>Ordered Date</th>
-                <th>Total price</th>
-                <th>Order Id</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((e, i) => {
-                return (
-                  <tr key={i}>
-                    {/* {console.log(e)} */}
-                    <td>{i + 1}</td>
-                    <td>
-                      <Link
-                        className="orders-link"
-                        onClick={() => {
-                          updateProductDetails(e.orderedProducts, e._id);
-                          console.log(particularOrders);
-                          console.log(primaryId);
-                          setShowSubTable(true);
-                          setShowMainTable(false);
-                        }}
-                      >
-                        {e.Name}
-                      </Link>
-                    </td>
-                    <td>{e.orderedProducts.map((e) => "/" + e.name)}</td>
-                    <td>{e.created}</td>
-                    <td>
-                      Rs.
-                      {e.orderedProducts.reduce(
-                        (e, acc) => e + acc.price * acc.quantity,
-                        0
-                      )}
-                      .00
-                    </td>
-                    <td>{e.OrderId}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
           <Table
             className="Sub-Table"
             responsive
@@ -309,13 +292,6 @@ function AdminDashboard() {
                         <td>
                           {e.expected}
                           <hr />
-                          {/* <Form.Group controlId="dob">
-                            <Form.Control
-                              type="date"
-                              name="dob"
-                              placeholder="Date of Birth"
-                            />
-                          </Form.Group> */}
                         </td>
                       </tr>
                     );

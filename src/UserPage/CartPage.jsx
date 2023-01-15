@@ -22,14 +22,10 @@ function CartPage() {
   const { cart } = useSelector((item) => item.user);
   const name = useSelector((item) => item.user.userName);
   const email = useSelector((item) => item.user.email);
-  const action = "Ordered";
   const sendCart = async () => {
     let x = Math.floor(Math.random() * 1000000 + 1);
     let y = Math.floor(Math.random() * 100 + 1);
-    console.log(cart);
     console.log(cart.map((i) => i.name));
-    console.log(name);
-    console.log(email);
     let addDetails = await axios.post(
       `${env.apiurl}/order-details/add_details`,
       {
@@ -56,28 +52,17 @@ function CartPage() {
       <div>
         <Navbar bg="primary" variant="dark">
           <LogoutIcon
+            className="logout-icon-cartpage"
             onClick={() => {
               navigate("/");
             }}
           />
           <Container>
-            <Nav>
-              <div className="active-pink-3 active-pink-4 ">
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-              </div>
-            </Nav>
+            <Nav></Nav>
             <Nav className="my-nav">
               <Link to="/shoppage" className="my-Link my-link-first">
                 <span>Home</span>
               </Link>
-              {/* <Link to="/shoppage" className="my-Link">
-                <span>Features</span>
-              </Link> */}
               <Button className="cartdisp mr-5" disabled={true}>
                 <i className="fas fa-shopping-cart"></i>
                 <span> {cart.length}</span>
@@ -166,7 +151,16 @@ function CartPage() {
       )}
     </div>
   ) : (
-    "INVALID USER"
+    <div className="invalid">
+      <h1>INVALID USER</h1>
+      <Button
+        onClick={() => {
+          navigate("/home");
+        }}
+      >
+        Select User
+      </Button>
+    </div>
   );
 }
 

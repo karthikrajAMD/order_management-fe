@@ -24,3 +24,10 @@
 .carousel-indicators {
   z-index: 0;
 }
+.logout-icon-cartpage {
+  color: white;
+  margin-left: 30px;
+}
+.logout-icon-cartpage:hover {
+  cursor: pointer;
+}

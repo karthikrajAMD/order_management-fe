@@ -1,0 +1,83 @@
+/* ...................................................................................................
+ */
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+body {
+  font-family: "Montserrat", sans-serif;
+}
+.header-welcomepage {
+  position: fixed;
+  z-index: 111;
+  top: 5%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+}
+.logo {
+  font-size: 35px;
+  text-decoration: none;
+  padding: 10px;
+  float: left;
+  display: block;
+  color: #2ebd94;
+  font-weight: 700;
+}
+.banner {
+  /* background-image: url(https://drive.google.com/uc?export=view&id=132anbjsC6QddFRoyAnHbTXdNl8eqKeCX); */
+  background-image: url(image1.jpg);
+  height: 100vh;
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.content h2 {
+  color: #2ebd94;
+  font-family: "Bebas Neue", cursive;
+  font-size: 42px;
+  margin-bottom: 20%;
+}
+.content h2 span {
+  color: #000;
+}
+.Login-cont {
+  background: #2ebd94;
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 25px;
+  display: inline-block;
+  margin-top: 25px;
+  margin-left: 60%;
+}
+.Login-cont:hover {
+  cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  .header {
+    padding: 0px 50px;
+  }
+
+  .content h2 {
+    font-size: 70px;
+    margin-bottom: 20%;
+  }
+}
+@media (max-width: 600px) {
+  .banner {
+    background-position: 65%;
+  }
+  .content {
+    text-align: left;
+    padding-left: 5%;
+    margin-bottom: 20%;
+  }
+}
+.welcomepage-link {
+  color: #2ebd94;
+}

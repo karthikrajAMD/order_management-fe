@@ -2,7 +2,6 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-// import UncontrolledExample from "./Carousel";
 import ControlledCarousel from "./Contolled";
 import ProductPage from "./ProductPage";
 import Button from "react-bootstrap/Button";
@@ -20,6 +19,7 @@ function ShopPage() {
       <div>
         <Navbar bg="primary" variant="dark">
           <LogoutIcon
+            className="logout-icon-cartpage"
             onClick={() => {
               navigate("/");
             }}
@@ -39,9 +39,6 @@ function ShopPage() {
               <Link to="/shoppage" className="my-Link my-link-first">
                 Home
               </Link>
-              {/* <Link to="/shoppage" className="my-Link ">
-                Features
-              </Link> */}
               <Button
                 className="cartdisp mr-5"
                 onClick={(e) => {
@@ -61,6 +58,12 @@ function ShopPage() {
       <div>
         <ProductPage />
       </div>
+      <div
+        className="text-center p-3 mt-3"
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+      >
+        © 2023 Copyright
+      </div>
     </div>
   ) : (
     <>
@@ -68,7 +71,7 @@ function ShopPage() {
         <h1>INVALID USER</h1>
         <Button
           onClick={() => {
-            navigate("/demo-user");
+            navigate("/home");
           }}
         >
           Select User
