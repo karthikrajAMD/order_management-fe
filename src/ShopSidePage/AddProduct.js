@@ -56,82 +56,84 @@ function AddProduct() {
   return (
     <main className={sideShow ? "space-toggle" : null}>
       <SidebarDashboard name={PageName} role={"admin"} />
-      <div className="container">
-        <Form className="add-product-form">
-          <Form.Group className="mb-3" controlId="formBasicName">
-            <Form.Label>Name </Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Mobile Name "
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicBrand">
-            <Form.Label>Brand </Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Mobile Brand"
-              value={brand}
-              onChange={(e) => setBrand(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicModel">
-            <Form.Label>Model No.</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Model Number"
-              value={model}
-              onChange={(e) => setModel(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicImage">
-            <Form.Label>Image</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Image URL"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPrice">
-            <Form.Label>Price</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Enter Price/qty"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicRam">
-            <Form.Label>RAM</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Enter RAM"
-              value={ram}
-              onChange={(e) => setRam(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicRom">
-            <Form.Label>ROM</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Enter ROM"
-              value={rom}
-              onChange={(e) => setRom(e.target.value)}
-            />
-          </Form.Group>
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              addProducts();
-            }}
-          >
-            Submit
-          </Button>
-        </Form>
+      <div className="container ">
+        <div className="p-5">
+          <Form className="add-product-form p-4">
+            <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Label>Name </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Mobile Name "
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicBrand">
+              <Form.Label>Brand </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Mobile Brand"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicModel">
+              <Form.Label>Model No.</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Model Number"
+                value={model}
+                onChange={(e) => setModel(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicImage">
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Image URL"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPrice">
+              <Form.Label>Price</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter Price/qty"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicRam">
+              <Form.Label>RAM</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter RAM"
+                value={ram}
+                onChange={(e) => setRam(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicRom">
+              <Form.Label>ROM</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter ROM"
+                value={rom}
+                onChange={(e) => setRom(e.target.value)}
+              />
+            </Form.Group>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                addProducts();
+              }}
+            >
+              Submit
+            </Button>
+          </Form>
+        </div>
       </div>
       <ToastContainer
         position="top-right"

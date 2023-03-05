@@ -10,6 +10,7 @@ import AdminLoginPage from "./ShopSidePage/AdminLoginPage";
 import AdminDashboard from "./ShopSidePage/AdminDashboard";
 import CartPage from "./UserPage/CartPage";
 import ParticularOrder from "./ShopSidePage/ParticularOrder";
+import OrdersPage from "./UserPage/OrdersPage";
 import AddProduct from "./ShopSidePage/AddProduct";
 import WelcomePage from "./WelcomePage";
 function App() {
@@ -26,6 +27,7 @@ function App() {
           />
           {/* <Route path="/demo-user" element={<DemoUser />} /> */}
           <Route path="/shoppage" element={<ShopPage />} />
+          <Route path="/orders_page" element={<OrdersPage />} />
           <Route path="/admin" element={<AdminLoginPage />} />
           <Route path="/cartpage" element={<CartPage />} />
           <Route path="/orders" element={<ParticularOrder />} />

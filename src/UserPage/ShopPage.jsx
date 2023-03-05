@@ -7,13 +7,18 @@ import ProductPage from "./ProductPage";
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
 import LogoutIcon from "@mui/icons-material/Logout";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { Link } from "react-router-dom";
 import "./product.css";
 import { useNavigate } from "react-router-dom";
 function ShopPage() {
   const { cart } = useSelector((item) => item.user);
+
   const navigate = useNavigate();
   const name = useSelector((item) => item.user.userName);
+  const email = useSelector((item) => item.user.email);
+  console.log(name);
+  console.log(email);
   return name ? (
     <div>
       <div>
@@ -21,7 +26,7 @@ function ShopPage() {
           <LogoutIcon
             className="logout-icon-cartpage"
             onClick={() => {
-              navigate("/");
+              navigate("/home");
             }}
           />
           <Container>
@@ -36,9 +41,18 @@ function ShopPage() {
               </div>
             </Nav>
             <Nav className="my-nav">
-              <Link to="/shoppage" className="my-Link my-link-first">
+              <Button
+                onClick={(e) => {
+                  navigate("/shoppage");
+                }}
+                className="my-Link my-link-first"
+              >
                 Home
-              </Link>
+              </Button>
+              <Button onClick={() => navigate("/orders_page")}>
+                <LocalMallIcon />
+                Your Orders
+              </Button>
               <Button
                 className="cartdisp mr-5"
                 onClick={(e) => {

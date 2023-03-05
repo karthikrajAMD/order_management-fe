@@ -51,3 +51,23 @@
   justify-content: center;
   flex-direction: column;
 }
+.total-cal {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.default-card {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+  box-shadow: 2px 2px 5px blue;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  border: 1px solid blue;
+}
+.card-num {
+  color: red;
+  font-weight: bold;
+}

@@ -152,3 +152,6 @@ main {
     padding-left: calc(var(--nav-width) + 188px);
   }
 }
+.nav-heading {
+  color: var(--first-color);
+}

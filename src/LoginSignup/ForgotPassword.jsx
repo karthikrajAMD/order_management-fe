@@ -12,7 +12,7 @@ const ForgotPassword = () => {
   const history = useNavigate();
 
   const [data2, setData] = useState(false);
-
+  const [but, setBut] = useState(false);
   const [password, setPassword] = useState("");
 
   const [message, setMessage] = useState("");
@@ -43,15 +43,17 @@ const ForgotPassword = () => {
 
   const sendpassword = async (e) => {
     e.preventDefault();
-
+    setBut(true);
     if (password === "") {
       toast.error("password is required!", {
         position: "top-center",
       });
+      setBut(false);
     } else if (password.length < 6) {
       toast.error("password must be 6 char!", {
         position: "top-center",
       });
+      setBut(false);
     } else {
       const res = await fetch(`${env.apiurl}/users/${id}/${token}`, {
         method: "POST",
@@ -68,6 +70,7 @@ const ForgotPassword = () => {
         setPassword("");
         setMessage(true);
         setTimeout(() => {
+          // setBut(false);
           navigate("/home");
         }, 3000);
         // navigate("/home");
@@ -75,6 +78,7 @@ const ForgotPassword = () => {
         toast.error("! Token Expired generate new LInk", {
           position: "top-center",
         });
+        setBut(false);
       }
     }
   };
@@ -99,7 +103,7 @@ const ForgotPassword = () => {
               <form>
                 {message ? (
                   <p style={{ color: "green", fontWeight: "bold" }}>
-                    Password Succesfulyy Update{" "}
+                    Password Successfully Update{" "}
                   </p>
                 ) : (
                   ""
@@ -116,7 +120,7 @@ const ForgotPassword = () => {
                   />
                 </div>
 
-                <button className="btn" onClick={sendpassword}>
+                <button className="btn" onClick={sendpassword} disabled={but}>
                   Send
                 </button>
               </form>

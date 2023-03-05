@@ -24,25 +24,39 @@ function SidebarDashboard(props) {
                 ></i>
               </div>
               <div>
-                <h2 className="h2-title">{props.name}</h2>
+                <h2 className="h2-title nav-heading">{props.name}</h2>
               </div>
             </header>
             <aside className={`sidebar ${sideShow ? "sideShow" : null}`}>
               <nav className="nav">
                 <div>
-                  <Link to="/" className="nav-logo active">
+                  <Link to="/" className="nav-logo">
                     <i className={`fas fa-home-alt nav-logo-icon`}></i>
-                    <span className="nav-logo-name">Homepage</span>
+                    <span className="nav-logo-name ">Homepage</span>
                   </Link>
 
                   <div className="nav-list">
-                    <Link to={"/dashboard"} className="nav-links ">
+                    <Link
+                      to={"/dashboard"}
+                      className={
+                        props.name === "Dashboard"
+                          ? "nav-links active"
+                          : "nav-links "
+                      }
+                    >
                       <i className="fas fa-tachometer-alt nav-links-icon"></i>
-                      <span className="nav-links-name">Dashboard</span>
+                      <span className="nav-links-name ">Dashboard</span>
                     </Link>
-                    <Link to={"/add-product"} className="nav-links">
+                    <Link
+                      to={"/add-product"}
+                      className={
+                        props.name === "Add Product"
+                          ? "nav-links active"
+                          : "nav-links "
+                      }
+                    >
                       <i className="fas fa-hotel nav-links-icon"></i>
-                      <span className="nav-links-name">Add Product</span>
+                      <span className="nav-links-name ">Add Product</span>
                     </Link>
                     {/* <Link
                       to={
@@ -57,7 +71,7 @@ function SidebarDashboard(props) {
 
                 <Link to="/home" className="nav-links">
                   <i className="fas fa-sign-out nav-links-icon"></i>
-                  <span className="nav-links-name">Logout</span>
+                  <span className="nav-links-name ">Logout</span>
                 </Link>
               </nav>
             </aside>

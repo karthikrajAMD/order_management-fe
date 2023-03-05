@@ -46,8 +46,9 @@ function ResponsiveDrawer(props) {
   const [a, setA] = useContext(Context);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const listStyle = {
-    background: "#fafa00",
-    backgroundColor: "red",
+    // background: "#fafa00",
+    // backgroundColor: "red",
+    background: "rgb(70, 245, 252) 100%",
   };
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -58,7 +59,7 @@ function ResponsiveDrawer(props) {
       <Toolbar />
       <Divider />
       <List>
-        {["Demo-user", "Login", "Signup"].map((text, index) => (
+        {["Demo-users", "Login", "Signup"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton
               onClick={() => {
@@ -169,8 +170,7 @@ function ResponsiveDrawer(props) {
         <Toolbar />
         {a ? (
           <Typography component="div">
-            {console.log(a)}
-            {a === "Demo-user" ? <DemoUser /> : ""}
+            {a === "Demo-users" ? <DemoUser /> : ""}
             {a === "Login" ? <Login /> : ""}
             {a === "Signup" ? <Signup /> : ""}
             {a === "Forgot" ? <ForgotPassword /> : ""}

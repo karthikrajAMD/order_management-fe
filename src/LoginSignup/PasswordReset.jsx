@@ -3,8 +3,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { env } from "../environment";
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
-
-  const [message, setMessage] = useState("");
+  const [but, setBut] = useState(false);
+  const [message, setMessage] = useState();
 
   const setVal = (e) => {
     setEmail(e.target.value);
@@ -12,15 +12,17 @@ const PasswordReset = () => {
 
   const sendLink = async (e) => {
     e.preventDefault();
-
+    setBut(true);
     if (email === "") {
       toast.error("email is required!", {
         position: "top-center",
       });
+      setBut(false);
     } else if (!email.includes("@")) {
       toast.warning("includes @ in your email!", {
         position: "top-center",
       });
+      setBut(false);
     } else {
       const res = await fetch(`${env.apiurl}/users/sendpasswordlink`, {
         method: "POST",
@@ -35,10 +37,12 @@ const PasswordReset = () => {
       if (data.statusCode === 200) {
         setEmail("");
         setMessage(true);
+        // setBut(false);
       } else {
         toast.error("Invalid User", {
           position: "top-center",
         });
+        setBut(false);
       }
     }
   };
@@ -53,7 +57,7 @@ const PasswordReset = () => {
 
           {message ? (
             <p style={{ color: "green", fontWeight: "bold" }}>
-              pasword reset link send Succsfully in Your Email
+              password reset link send Successfully in Your Email
             </p>
           ) : (
             ""
@@ -71,7 +75,7 @@ const PasswordReset = () => {
               />
             </div>
 
-            <button className="btn" onClick={sendLink}>
+            <button className="btn" onClick={sendLink} disabled={but}>
               Send
             </button>
           </form>

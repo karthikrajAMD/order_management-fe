@@ -7,6 +7,7 @@ import { env } from "../environment";
 import { Context } from "../Context.js";
 const Login = () => {
   const [passShow, setPassShow] = useState(false);
+  const [but, setBut] = useState(false);
   const [a, setA] = useContext(Context);
   let navigate = useNavigate();
   const [inpval, setInpval] = useState({
@@ -26,26 +27,30 @@ const Login = () => {
   };
 
   const loginuser = async (e) => {
+    setBut(true);
     e.preventDefault();
     const { email, password } = inpval;
     if (email === "") {
       toast.error("email is required!", {
         position: "top-center",
       });
+      setBut(false);
     } else if (!email.includes("@")) {
       toast.warning("includes @ in your email!", {
         position: "top-center",
       });
+      setBut(false);
     } else if (password === "") {
       toast.error("password is required!", {
         position: "top-center",
       });
+      setBut(false);
     } else if (password.length < 6) {
       toast.error("password must be 6 char!", {
         position: "top-center",
       });
+      setBut(false);
     } else {
-      toast.success("Welcome");
       const data = await fetch(`${env.apiurl}/users/login`, {
         method: "POST",
         headers: {
@@ -59,14 +64,17 @@ const Login = () => {
       const res = await data.json();
       if (res.statusCode === 200) {
         toast.success(res.message, { position: "top-center" });
+
         sessionStorage.setItem("token", res.token);
         setTimeout(() => {
+          setBut(false);
           navigate("/dashboard");
         }, 3000);
       } else {
         toast.error(res.message, {
           position: "top-center",
         });
+        setBut(false);
       }
     }
   };
@@ -114,28 +122,28 @@ const Login = () => {
               </div>
             </div>
 
-            <button className="btn" onClick={loginuser}>
+            <button className="btn" onClick={loginuser} disabled={but}>
               Login
             </button>
             <p>
-              Don't have an Account?{" "}
+              Don't have an Account?
               <NavLink
                 onClick={() => {
                   setA("Signup");
                 }}
               >
                 Sign Up
-              </NavLink>{" "}
+              </NavLink>
             </p>
             <p style={{ color: "black", fontWeight: "bold" }}>
-              Forgot Password{" "}
+              Forgot Password
               <NavLink
                 onClick={() => {
                   setA("Reset");
                 }}
               >
                 Click Here
-              </NavLink>{" "}
+              </NavLink>
             </p>
           </form>
           <ToastContainer />
